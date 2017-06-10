@@ -28,3 +28,17 @@ steps:
     type: push
     candidate: '${{build_image_linux_x86}}'
     tag: 'linux-x86'
+
+  build_image_linux_x64:
+    type: build
+    description: Building the image [linux-x64]...
+    working_directory: ${{main_clone}}/linux-x64
+    dockerfile: Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/dockcross-node
+    tag: 'linux-x64'
+
+  push_to_registry_linux_x64:
+    title: Pushing to Docker Registry [linux-x64]...
+    type: push
+    candidate: '${{build_image_linux_x64}}'
+    tag: 'linux-x64'
